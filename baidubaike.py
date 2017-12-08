@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
-
 from pyspider.libs.base_handler import *
 
 PAGE_START = 1
@@ -28,7 +27,6 @@ class Handler(BaseHandler):
     def index_page(self, response):
         for each in response.doc('.lady-name').items():
             self.crawl(each.attr.href, callback=self.detail_page, validate_cert=False, fetch_type='js')
-
 
     def detail_page(self, response):
         domain = response.doc('.mm-p-domain-info li > span').text()
