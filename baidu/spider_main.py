@@ -20,18 +20,19 @@ class SpiderMain(object):
                 new_urls, new_data = self.parser.parse(new_url, html_cont)
                 self.urls.add_new_urls(new_urls)
                 self.outputer.collect_data(new_data)
-
-                if count == 10:
-                    break
+                if count % 1000 == 0:
+                    self.outputer.output_html()
+                    # if count == 100:
+                    #     break
                 count = count + 1
             except:
                 print 'craw fail'
-        self.outputer.output_html()
+        # self.outputer.output_html()
+
 
 if __name__ == "__main__":
     # 爬虫入口页面
-    # root_url = 'http://baike.baidu.com/item/scala'
-    root_url=u"https://baike.baidu.com/item/%e9%87%91%e8%9e%8d"
+    root_url = u"https://baike.baidu.com/item/%e9%87%91%e8%9e%8d"
     obj_spider = SpiderMain()
     # 启动爬虫
     obj_spider.craw(root_url)

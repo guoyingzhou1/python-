@@ -26,7 +26,7 @@ class UrlManager(object):
     def has_new_url(self):
         return len(self.new_urls) != 0
 
-        # 获取新的带爬取的url
+        # 获取新的要爬取的url
 
     def get_new_url(self):
         new_url = self.new_urls.pop()

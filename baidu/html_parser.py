@@ -5,6 +5,7 @@ import re
 
 
 class HtmlPsrser(object):
+    # 找到页面中所有的url,相对路径的url转换成绝对路径的url
     def _get_new_urls(self, page_url, soup):
         new_urls = set()
         # links = soup.find_all('a', href=re.compile(r"/item/\d+\.html"))
@@ -26,7 +27,12 @@ class HtmlPsrser(object):
 
         # <div class="lemma-summary" label-module="lemmaSummary">
         summary_node = soup.find('div', class_="lemma-summary")
-        res_data['summary'] = summary_node.get_text()
+        # summary_node = soup.find('div', class_="main-content")
+        para_nodes = soup.find_all('div', class_="para")
+        str1 = ""
+        for para_node in para_nodes:
+            str1 = str1 + para_node.get_text()
+        res_data['summary'] = summary_node.get_text() + " " + str1
 
         return res_data
 
