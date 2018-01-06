@@ -15,7 +15,7 @@ class spider_main(object):
     def craw_con(self, ursour):
         user_agent = 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'  # 初始化headers
         headers = {'User-Agent': user_agent}
-        i = 0
+        i = 120
         while i < 1195:
             try:
                 url = ursour + str(i)
